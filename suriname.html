@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="theme-color" content="black"/>
+<meta name="msapplication-navbutton-color" content="black"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>KD Radio - Suriname</title>
+<style>
+.loader{
+position:fixed; z-index:9999;
+top:0; bottom:0; left:0; right:0;
+background: black; min-width: 100%; min-height:100%;
+display:flex; justify-content:center; align-items:center;
+}
+
+.loader>img{
+min-width: 10vw; min-height: 10vw;
+}
+</style>
+<link rel="stylesheet" href= "style.css">
+</head>
+<body>
+<div id= "topbar">
+<img class="fixed" id="in" src="resources/in.svg"/>
+<div class="fixed" id="hide">All</div>
+</div>
+<div class="loader">
+<img src="resources/loading.svg"/>
+</div>
+<div id="container">
+<button class="button">Sarnamie</button>
+<p id="stop">STOP</p>
+<div id="timer">NO RADIO PLAYING</div>
+</div>
+
+<script>
+/*Wait until everything loads
+window.onload= function(){
+var loader= document.querySelector(".loader");
+loader.parentNode.removeChild(loader);
+};*/
+
+function removeloader(){
+var loader= document.querySelector(".loader");
+loader.parentNode.removeChild(loader);
+};
+
+
+
+
+//Dynamically load JS file to prevent  caching
+let suri= document.createElement("script"),
+script= document.createElement("script");
+
+suri.src= "suriname.js?v=" + Date.now();
+script.src= "script.js?v=" + Date.now();
+
+suri.async= false;
+script.async= false;
+document.body.append(suri,script);
+
+
+script.onload= removeloader;
+
+</script>
+</body>
+</html>
